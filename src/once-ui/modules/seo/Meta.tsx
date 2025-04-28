@@ -8,6 +8,8 @@ export interface MetaProps {
   type?: "website" | "article";
   image?: string;
   publishedTime?: string;
+  keywords?: string;
+  canonical?: string;
   author?: {
     name: string;
     url?: string;
@@ -22,6 +24,8 @@ export function generateMetadata({
   type = "website",
   image,
   publishedTime,
+  keywords,
+  canonical,
   author,
 }: MetaProps): NextMetadata {
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
@@ -36,10 +40,12 @@ export function generateMetadata({
     : `${normalizedBaseURL}/og?title=${encodeURIComponent(title)}`;
 
   const url = `${normalizedBaseURL}${normalizedPath}`;
+  const canonicalUrl = canonical || url;
 
   return {
     title,
     description,
+    keywords,
     openGraph: {
       title,
       description,
@@ -59,6 +65,7 @@ export function generateMetadata({
       description,
       images: [ogImage],
     },
+    ...(canonical ? { alternates: { canonical: canonicalUrl } } : {}),
     ...(author ? { authors: [{ name: author.name, url: author.url }] } : {}),
   };
 }

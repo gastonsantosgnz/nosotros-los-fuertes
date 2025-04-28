@@ -49,6 +49,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <head>
         <link rel="icon" href="/images/nlflogo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/images/nlflogo.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

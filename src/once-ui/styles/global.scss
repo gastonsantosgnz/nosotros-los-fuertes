@@ -41,8 +41,20 @@ li {
     }
 }
 
+/* Estilos para artículos y posts de blog */
+article {
+    width: 100%;
+    
+    /* Asegurar que los párrafos tengan un buen espaciado y sean legibles */
+    p {
+        margin-bottom: var(--static-space-16);
+        line-height: 1.75;
+    }
+}
+
 blockquote {
     display: flex;
+    flex-direction: column; /* Asegura que por defecto sea en columna */
     margin: var(--static-space-16) 0;
     border-radius: var(--radius-m);
     background: var(--brand-alpha-weak);
@@ -53,6 +65,27 @@ blockquote {
     max-width: var(--responsive-width-xs);
     padding: var(--static-space-12) var(--static-space-24) var(--static-space-8) var(--static-space-24);
     width: 100%;
+
+    /* En dispositivos de escritorio (más de 768px), mostrar en dos columnas */
+    @media (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        /* Para crear el efecto de dos columnas para elementos dentro del blockquote */
+        > p, > ul, > ol {
+            width: 48%; /* Ligeramente menos que la mitad para tener espacio entre columnas */
+            margin-right: 2%;
+        }
+    }
+
+    /* En dispositivos móviles, asegurar que todos los elementos ocupen el ancho completo */
+    @media (max-width: 767px) {
+        > p, > ul, > ol {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
 
     span {
         margin: 0 !important;

@@ -1,0 +1,21 @@
+{
+  "name": "Nosotros los Fuertes",
+  "short_name": "NLF",
+  "description": "Un espacio para forjar hombres cristianos fuertes, íntegros y valientes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "/images/nlflogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/nlflogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

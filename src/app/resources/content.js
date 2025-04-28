@@ -41,10 +41,11 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/nlflogo.png",
+  image: "/images/og/nlfog.png",
   label: "Inicio",
   title: `Nosotros los Fuertes`,
   description: `Un espacio para forjar hombres cristianos fuertes, íntegros y valientes, llamados a transformar su vida, su familia y su mundo a la luz de la Palabra de Dios.`,
+  keywords: "hombres cristianos, desarrollo espiritual, carácter cristiano, fuerza espiritual, biblia, discipulado, hombres de fe",
   headline: <>Fuiste llamado a ser fuerte</>,
   featured: {
     display: true,
@@ -57,13 +58,16 @@ const home = {
       <br /> &ldquo;Así que, nosotros los fuertes debemos sobrellevar las flaquezas de los débiles, y no agradarnos a nosotros mismos.&rdquo;
     </>
   ),
+  canonical: "https://nosotroslosfuertes.com",
 };
 
 const about = {
   path: "/about",
   label: "Nosotros",
   title: `Sobre Nosotros los Fuertes`,
-  description: `Un ministerio dedicado a edificar hombres cristianos fuertes en carácter y fe`,
+  description: `Un ministerio dedicado a edificar hombres cristianos fuertes en carácter y fe, forjando líderes que impacten positivamente su familia, iglesia y comunidad.`,
+  keywords: "ministerio cristiano, hombres fuertes, carácter cristiano, liderazgo, masculinidad bíblica, discipulado",
+  canonical: "https://nosotroslosfuertes.com/about",
   tableOfContent: {
     display: true,
     subItems: false,
@@ -168,8 +172,10 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Nosotros los Fuertes",
-  description: `Artículos para hombres cristianos sobre fe, carácter, familia, trabajo y salud.`,
+  title: "Blog | Nosotros los Fuertes",
+  description: `Artículos y reflexiones para hombres cristianos sobre fe, carácter, familia, trabajo y salud desde una perspectiva bíblica sólida.`,
+  keywords: "blog cristiano, artículos para hombres, fe cristiana, carácter, familia, trabajo, salud, reflexiones bíblicas",
+  canonical: "https://nosotroslosfuertes.com/blog",
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };

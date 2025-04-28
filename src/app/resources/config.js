@@ -1,5 +1,5 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "nosotroslosfuertes.com";
+const baseURL = "https://nosotroslosfuertes.com";
 
 const routes = {
   "/": true,
@@ -97,7 +97,7 @@ const display = {
 };
 
 const mailchimp = {
-  action: "https://url/subscribe/post?parameters",
+  action: "https://nosotroslosfuertes.us21.list-manage.com/subscribe/post?u=YOUR_U_VALUE&id=YOUR_ID_VALUE",
   effects: {
     mask: {
       cursor: true,
