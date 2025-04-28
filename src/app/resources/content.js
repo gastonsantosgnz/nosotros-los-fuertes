@@ -1,25 +1,25 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Gastón",
+  lastName: "Santos",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Fundador - Nosotros los Fuertes",
+  avatar: "/images/nlflogo.png",
+  email: "hola@nosotroslosfuertes.com",
+  location: "America/Tijuana", // Tijuana, Baja California, México
+  languages: ["Español"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Suscríbete a Nosotros los Fuertes</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Un email semanal con reflexiones, retos y recursos para crecer en fe, 
+      carácter, familia y propósito como hombre cristiano.
     </>
   ),
 };
@@ -28,19 +28,9 @@ const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
-  },
-  {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
+    name: "Instagram",
+    icon: "instagram",
+    link: "https://instagram.com/nosotroslosfuertes",
   },
   {
     name: "Email",
@@ -51,29 +41,29 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
-  label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  image: "/images/nlflogo.png",
+  label: "Inicio",
+  title: `Nosotros los Fuertes`,
+  description: `Un espacio para forjar hombres cristianos fuertes, íntegros y valientes, llamados a transformar su vida, su familia y su mundo a la luz de la Palabra de Dios.`,
+  headline: <>Fuiste llamado a ser fuerte</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Romanos 15:1-3</>,
+    href: "/blog",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      No para tu propia gloria, sino para edificar, proteger y servir.
+      <br /> &ldquo;Así que, nosotros los fuertes debemos sobrellevar las flaquezas de los débiles, y no agradarnos a nosotros mismos.&rdquo;
     </>
   ),
 };
 
 const about = {
   path: "/about",
-  label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  label: "Nosotros",
+  title: `Sobre Nosotros los Fuertes`,
+  description: `Un ministerio dedicado a edificar hombres cristianos fuertes en carácter y fe`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -82,60 +72,76 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "",
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Nuestra visión",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Nosotros los Fuertes es un espacio dedicado a forjar hombres cristianos fuertes, íntegros y 
+        valientes, llamados a transformar su vida, su familia y su mundo a la luz de la Palabra de Dios.
+        Creemos que el hombre cristiano está llamado no solo a recibir, sino también a edificar, 
+        proteger y servir.
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Categorías de contenido",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Fe",
+        timeframe: "",
+        role: "Crecimiento espiritual",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Estudios bíblicos, devocionales, discipulado y crecimiento espiritual para hombres cristianos.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Carácter",
+        timeframe: "",
+        role: "Desarrollo personal",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Desarrollo de virtudes como integridad, valentía, dominio propio y liderazgo interior.
           </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Familia",
+        timeframe: "",
+        role: "Relaciones",
+        achievements: [
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Matrimonio, paternidad, relaciones sanas y edificación del hogar desde una perspectiva bíblica.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Trabajo",
+        timeframe: "",
+        role: "Vocación y propósito",
+        achievements: [
+          <>
+            Productividad, excelencia profesional, propósito laboral y manejo de finanzas con integridad.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Salud",
+        timeframe: "",
+        role: "Bienestar integral",
+        achievements: [
+          <>
+            Bienestar físico, mental y emocional como herramientas para servir y liderar mejor.
           </>,
         ],
         images: [],
@@ -144,63 +150,26 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Sobre el autor",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Gastón Santos",
+        description: <>Hombre cristiano de 33 años, residente de Tijuana, Baja California, México. Felizmente casado y con 15 años caminando con el Señor.</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
-    skills: [
-      {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-    ],
+    display: false,
+    title: "",
+    skills: [],
   },
 };
 
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Nosotros los Fuertes",
+  description: `Artículos para hombres cristianos sobre fe, carácter, familia, trabajo y salud.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -221,48 +190,7 @@ const gallery = {
   description: `A photo collection by ${person.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

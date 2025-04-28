@@ -47,7 +47,9 @@ export default function About() {
     {
       title: about.technical.title,
       display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      items: (about.technical.skills && about.technical.skills.length > 0) 
+        ? about.technical.skills.map((skill: any) => skill?.title || '')
+        : [],
     },
   ];
   return (
@@ -129,7 +131,7 @@ export default function About() {
                 vertical="center"
               >
                 <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
+                <Flex paddingX="8">Agendar una llamada</Flex>
                 <IconButton
                   href={about.calendar.link}
                   data-border="rounded"
@@ -216,20 +218,20 @@ export default function About() {
                     </Column>
                     {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
+                        {experience.images.map((image: any, index: number) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image.width}
-                            height={image.height}
+                            minWidth={image?.width || 'auto'}
+                            height={image?.height || 'auto'}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
+                              sizes={(image?.width || '100').toString()}
+                              alt={image?.alt || ''}
+                              src={image?.src || ''}
                             />
                           </Flex>
                         ))}
@@ -272,28 +274,28 @@ export default function About() {
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                {about.technical.skills && about.technical.skills.length > 0 && about.technical.skills.map((skill: {title: string, description: string, images?: any[]}, index) => (
+                  <Column key={`${skill.title}-${index}`} fillWidth gap="4">
                     <Text variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                        {skill.images.map((image: any, index: number) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image.width}
-                            height={image.height}
+                            minWidth={image?.width || 'auto'}
+                            height={image?.height || 'auto'}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
+                              sizes={(image?.width || '100').toString()}
+                              alt={image?.alt || ''}
+                              src={image?.src || ''}
                             />
                           </Flex>
                         ))}

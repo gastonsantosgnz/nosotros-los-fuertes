@@ -1,0 +1,638 @@
+---
+title: "Guía de uso - Magic Portfolio"
+summary: "Documentación de referencia para el uso y personalización de Magic Portfolio"
+---
+
+# Guía de uso - Magic Portfolio
+
+Esta guía contiene información compilada de los posts de instrucciones originales del template. Sirve como documentación de referencia para el uso y personalización de Magic Portfolio.
+
+## Tabla de Contenidos
+
+1. [Inicio rápido](#inicio-rápido)
+2. [Blog y publicaciones](#blog-y-publicaciones)
+3. [Proyectos y trabajo](#proyectos-y-trabajo)
+4. [Componentes MDX](#componentes-mdx)
+5. [Personalización y estilos](#personalización-y-estilos)
+6. [SEO](#seo)
+7. [Mailchimp y newsletter](#mailchimp-y-newsletter)
+8. [Páginas y rutas](#páginas-y-rutas)
+9. [Protección por contraseña](#protección-por-contraseña)
+10. [Localización](#localización)
+11. [Gestión de contenido](#gestión-de-contenido)
+
+## Inicio rápido
+
+Magic Portfolio es una plantilla de portafolio completa, basada en MDX, optimizada para SEO y responsive, construida con Once UI y Next.js.
+
+### Licencia
+
+Magic Portfolio está bajo licencia [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Solo puedes usarlo para fines personales y debes atribuir el trabajo original. La atribución se agrega en el pie de página de forma predeterminada, pero puedes colocarla en cualquier otra parte visible de tu sitio.
+
+Suscríbete al [plan Once UI Pro](https://once-ui.com/pricing) para extender la licencia a [Dopler CC](https://once-ui.com/products/magic-portfolio).
+
+### Instalación
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/once-ui-system/magic-portfolio.git
+```
+
+Instala las dependencias:
+
+```bash
+npm install
+```
+
+Inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+## Blog y publicaciones
+
+### Crear y gestionar posts
+
+Puedes crear, editar y eliminar posts añadiendo, modificando o eliminando archivos `*.mdx` en el directorio `src/app/blog/posts`.
+
+### Frontmatter
+
+El frontmatter se utiliza para configurar los metadatos del post: título, descripción, imagen y etiquetas. Se utiliza en la página del post y en las etiquetas meta y open graph.
+
+```mdx
+---
+title: "Título del artículo"
+publishedAt: "2025-04-20"
+image: "/images/ruta-imagen.jpg"
+summary: "Breve descripción del contenido del artículo."
+tag: "Categoría"
+---
+```
+
+### Sintaxis MDX
+
+Puedes usar MDX para escribir el contenido de tus posts. Te ayuda a escribir contenido rico y dinámico con un código mínimo. Algunos elementos MDX se transformarán automáticamente en componentes de Once UI para integrarse mejor en el diseño y añadir funcionalidades adicionales.
+
+### Recarga en caliente
+
+Actualmente, la recarga en caliente de archivos MDX no es compatible, pero están trabajando en ello.
+
+## Proyectos y trabajo
+
+### Gestionar proyectos
+
+Puedes crear, editar y eliminar proyectos añadiendo, modificando o eliminando archivos `*.mdx` en el directorio `src/app/work/projects`.
+
+### Frontmatter para proyectos
+
+El frontmatter se utiliza para configurar los metadatos del proyecto: título, descripción, imagen y etiquetas.
+
+```mdx
+---
+title: "Desarrollando un sistema de diseño para creadores independientes"
+publishedAt: "2025-03-17"
+summary: "Once UI es un sistema de diseño que permite a creadores independientes, pequeños equipos y startups construir aplicaciones web."
+images:
+  - "/images/projects/project-01/cover-02.jpg"
+  - "/images/projects/project-01/image-03.jpg"
+team:
+  - name: "Nombre del miembro"
+    role: "Rol"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/..."
+link: "https://ejemplo.com/"
+---
+```
+
+## Componentes MDX
+
+Magic Portfolio reemplaza algunos elementos HTML predeterminados por componentes de Once UI para una mejor integración en el diseño y añadir funcionalidad adicional. Además, muchos componentes comunes de Once UI ya están importados y disponibles para su uso.
+
+### Componentes disponibles
+
+#### Feedback
+
+El componente Feedback se utiliza para mostrar información crítica a los visitantes.
+
+```jsx
+<Feedback
+    icon
+    variant="success"
+    title="Elemento de feedback"
+    description="Descripción más larga del mensaje de feedback."
+/>
+```
+
+#### Table
+
+Las tablas se utilizan para mostrar datos en un formato estructurado.
+
+```jsx
+<Table 
+    data={{
+      headers: [
+        { content: "Nombre", key: "name", sortable: true },
+        { content: "Tipo", key: "type", sortable: true },
+        { content: "Descripción", key: "description" }
+      ],
+      rows: [
+        ["título", "string", "El título del documento"],
+        ["resumen", "string", "Un breve resumen del contenido del documento"],
+        ["actualizadoEn", "string", "La fecha en que se actualizó por última vez el documento"],
+        ["etiquetaNav", "string", "La etiqueta utilizada en los menús de navegación"]
+      ]
+    }}
+/>
+```
+
+#### CodeBlock
+
+Usa el componente CodeBlock para mostrar fragmentos de código con resaltado de código, vista previa y funcionalidad de copiar al portapapeles.
+
+```jsx
+// Sintaxis completa del componente
+<CodeBlock
+    codeInstances={[
+      {
+        code: "console.log('Hola, Mundo!');",
+        language: "javascript",
+        label: "Ejemplo"
+      }
+    ]}
+/>
+
+// Ejemplo de sintaxis corta
+```tsx
+function saludo(nombre) {
+    return `Hola, ${nombre}!`;
+}
+
+console.log(saludo('Mundo'));
+```
+```
+
+#### InlineCode
+
+Usa `InlineCode` para fragmentos de código en línea.
+
+```jsx
+// Sintaxis completa del componente
+<InlineCode>
+    const x = 10;
+</InlineCode>
+
+// Sintaxis corta
+`const x = 10;`
+```
+
+#### Accordion
+
+Los acordeones se utilizan para alternar entre ocultar y mostrar contenido.
+
+```jsx
+<AccordionGroup 
+    items={[
+      {
+        title: "Sección 1",
+        content: <Text>Este es el contenido de la sección 1.</Text>
+      },
+      {
+        title: "Sección 2",
+        content: <Text>Este es el contenido de la sección 2.</Text>
+      },
+      {
+        title: "Sección 3",
+        content: <Text>Este es el contenido de la sección 3.</Text>
+      }
+    ]}
+/>
+```
+
+#### Button
+
+Los botones se utilizan para activar acciones o navegar a otras páginas.
+
+```jsx
+<Row gap="8">
+  <Button variant="primary" label="Primario" />
+  <Button variant="secondary" label="Secundario" />
+  <Button variant="tertiary" label="Terciario" />
+</Row>
+```
+
+#### Card
+
+Las tarjetas se utilizan para agrupar contenido y acciones relacionadas.
+
+```jsx
+<Card
+    href=" "
+    maxWidth={20}
+    radius="l-4"
+    direction="column"
+    padding="4"
+  >
+    <SmartImage src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
+    <Column fillWidth padding="12" gap="8" horizontal="start">
+      <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
+        Título de la tarjeta
+      </Text>
+      <Text variant="body-default-s" onBackground="neutral-weak" align="left">
+        Esta es una descripción de la tarjeta. Puede contener varias líneas de texto.
+      </Text>
+    </Column>
+</Card>
+```
+
+#### Icon
+
+Los iconos se utilizan para representar visualmente acciones, objetos o conceptos.
+
+```jsx
+<Icon name="rocket" size="m" />
+<Icon name="close" size="m" />
+<Icon name="check" onBackground="success-medium" size="m" />
+<Icon name="infoCircle" onBackground="info-medium" size="m" />
+<Icon name="warningTriangle" onBackground="warning-medium" size="m" />
+<Icon name="chevronDown" size="m" />
+<Icon name="search" size="m" />
+```
+
+#### Layout (Flex, Column, Row, Grid)
+
+Los componentes de diseño ayudan a estructurar el contenido en la página.
+
+```jsx
+// Flex (como Row y Column)
+<Row
+    fillWidth
+    mobileDirection="column"
+    gap="16"
+  >
+    <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+      <Row padding="8">Elemento de fila</Row>
+      <Row padding="8">Elemento de fila</Row>
+    </Column>
+    <!-- Más columnas... -->
+</Row>
+
+// Grid
+<Grid
+    fillWidth
+    columns="3"
+    mobileColumns="2"
+    gap="16"
+  >
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Elemento de cuadrícula</Text>
+    </Column>
+    <!-- Más elementos... -->
+</Grid>
+```
+
+#### SmartImage
+
+SmartImage proporciona una manera optimizada de mostrar imágenes.
+
+```jsx
+<SmartImage
+    src="/images/projects/project-01/cover-01.jpg"
+    sizes="640px"
+    alt="Imagen de ejemplo"
+    aspectRatio="16/9"
+    radius="l"
+/>
+
+// También para embeber videos de YouTube
+<SmartImage
+    src="https://www.youtube.com/watch?v=TQT_FSdxbC8"
+    alt="Video de ejemplo"
+    aspectRatio="16/9"
+    radius="l"
+/>
+```
+
+#### SmartLink
+
+SmartLink proporciona una forma mejorada de enlazar a recursos internos y externos.
+
+```jsx
+<SmartLink href=" " suffixIcon="chevronRight">Enlace con icono</SmartLink>
+```
+
+### Componentes personalizados
+
+Puedes usar componentes personalizados en archivos MDX, pero primero debes importarlos en el archivo `src/components/mdx.tsx`.
+
+```jsx
+const components = {
+    // Agrega nuevos componentes
+    p: createParagraph as any,
+    h1: createHeading("h1") as any,
+    // ...
+    SmartImage: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartImage)),
+    SmartLink: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartLink)),
+};
+```
+
+## Personalización y estilos
+
+### Estilo global
+
+El estilo de Magic Portfolio se basa en la personalización de Once UI a través de atributos de datos. Puedes generar una paleta de colores personalizada para los colores de marca, acento y neutros en [Once UI](https://once-ui.com/customize).
+
+```js
+// src/app/resources/config.js
+const style = {
+  theme:       'dark',         // dark | light
+  neutral:     'gray',         // sand | gray | slate
+  brand:       'blue',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent:      'indigo',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  solid:       'contrast',     // color | contrast
+  solidStyle:  'flat',         // flat | plastic
+  border:      'playful',      // rounded | playful | conservative
+  surface:     'translucent',  // filled | translucent
+  transition:  'all',          // all | micro | macro
+  scaling:     '100',          // 90 | 95 | 100 | 105 | 110
+};
+```
+
+### Efecto de fondo
+
+Hay un fondo preconfigurado en `layout.tsx` que puedes modificar en el archivo de configuración. Configura elementos gráficos como gradiente, puntos, líneas y cuadrícula y ajusta su apariencia.
+
+```js
+// src/app/resources/config.js
+const effects = {
+    mask: {
+      cursor: false,
+      x: 50,
+      y: 0,
+      radius: 100
+    },
+    gradient: {
+      display: true,
+      x: 50,
+      y: -25,
+      width: 100,
+      height: 100,
+      tilt: 0,
+      colorStart: 'accent-background-strong',
+      colorEnd: 'static-transparent',
+      opacity: 50
+    },
+    dots: {
+      display: true,
+      size: 2,
+      color: 'brand-on-background-weak',
+      opacity: 20
+    },
+    lines: {
+      display: false,
+      color: 'neutral-alpha-weak',
+      opacity: 100
+    },
+    grid: {
+      display: false,
+      color: 'neutral-alpha-weak',
+      opacity: 100,
+      width: 'var(--static-space-32)',
+      height: 'var(--static-space-32)'
+    }
+};
+```
+
+## SEO
+
+### Metaetiquetas
+
+Magic Portfolio genera automáticamente meta y etiquetas open graph para tus páginas basándose en el archivo `content.js`.
+
+### Schema
+
+Magic Portfolio genera automáticamente etiquetas de schema para tus páginas basándose en el archivo `content.js`.
+
+### Imagen Open Graph
+
+Las imágenes para compartir en redes sociales (open-graph y twitter) se generan automáticamente con `next/og`.
+
+```jsx
+// src/app/{page}/page.tsx
+export async function generateMetadata() {
+  const title = home.title;
+  const description = home.description;
+  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+   // ...
+};
+```
+
+La declaración anterior genera la imagen social con el título de la página. Puedes usar una imagen estática reemplazando el valor de `ogImage` con una ruta a una imagen en el directorio `public`.
+
+> **Importante:** Asegúrate de haber actualizado el archivo `content.js` con tu propia información y la variable `baseURL` en el archivo `config.js`.
+
+## Mailchimp y newsletter
+
+### Cuenta de Mailchimp
+
+Regístrate para obtener una [cuenta de Mailchimp](https://mailchimp.com) y crea una nueva lista si no tienes una.
+
+### Formulario integrado
+
+Crea un nuevo [formulario integrado](https://mailchimp.com/help/add-a-signup-form-to-your-website/) y copia la URL del formulario a la configuración de tu Magic Portfolio.
+
+```js
+// src/app/resources/config.js
+const mailchimp = {
+    action: 'https://url/subscribe/post?parameters',
+    effects: {
+      mask: {
+        cursor: true,
+        x: 50,
+        y: 0,
+        radius: 100,
+      },
+      gradient: {
+        display: true,
+        opacity: 90,
+        x: 50,
+        y: 0,
+        width: 50,
+        height: 50,
+        tilt: 0,
+        colorStart: "accent-background-strong",
+        colorEnd: "static-transparent",
+      },
+      dots: {
+        display: true,
+        opacity: 20,
+        size: "2",
+        color: "brand-on-background-weak",
+      },
+      // más configuraciones...
+    }
+};
+```
+
+### Contenido del boletín
+
+Puedes modificar el título y la descripción en el archivo `content.js`.
+
+```jsx
+// src/app/resources/content.js
+const newsletter = {
+    display: true,
+    title: <>Suscríbete al Boletín</>,
+    description: (
+      <>
+        Ocasionalmente escribo sobre diseño, tecnología y comparto pensamientos sobre la intersección de creatividad e ingeniería.
+      </>
+    ),
+};
+```
+
+## Páginas y rutas
+
+### Habilitar o deshabilitar páginas
+
+El componente `RouteGuard` de Magic Portfolio se encarga de renderizar condicionalmente las páginas según el objeto `routes` en el archivo `resources/config.js`.
+
+```js
+// src/app/resources/config.js
+const routes = {
+    '/':        true,
+    '/about':   true,
+    '/work':    false,
+    '/blog':    true,
+    '/gallery': false,
+};
+```
+
+El código anterior asegurará que la página `/gallery` no sea accesible y no se muestre en la navegación.
+
+### Añadir nuevas páginas
+
+Al crear una nueva página, debe añadirse al objeto `routes` en el archivo `resources/config.js` y luego agregarla al menú de navegación en `components/Header.tsx`.
+
+```js
+// src/app/resources/config.js
+const routes = {
+    '/':        true,
+    '/about':   true,
+    '/work':    false,
+    '/blog':    true,
+    '/gallery': false,
+    '/musica':  true,
+};
+```
+
+## Protección por contraseña
+
+### Añadir páginas protegidas
+
+Para habilitar la protección por contraseña para páginas específicas, añade las rutas de las páginas que deseas proteger al objeto `protectedRoutes` en el archivo `resources/config.js`.
+
+```js
+// src/app/resources/config.js
+const protectedRoutes = {
+  '/work/once-ui': true
+};
+```
+
+El código anterior asegurará que la página `/work/once-ui` solo sea accesible después de proporcionar una contraseña.
+
+### Establecer una contraseña
+
+La contraseña puede establecerse en el archivo `.env.local` para desarrollo local y como una [variable de entorno](https://vercel.com/docs/environment-variables) para producción.
+
+## Localización
+
+En la última versión de Magic Portfolio, la localización ya no es compatible. Sin embargo, la versión localizada creada por [François Hernandez](https://github.com/francoishernandez) todavía está disponible como una [rama separada](https://github.com/once-ui-system/magic-portfolio/tree/localization-(Once-UI-0.4.2)). Esta rama no recibirá más actualizaciones.
+
+## Gestión de contenido
+
+### Avatar
+
+Reemplaza el archivo `public/images/avatar.jpg` con tu propia imagen de avatar. Se utiliza en la página `/about` y en las imágenes de `open-graph` generadas dinámicamente.
+
+### Favicon
+
+Reemplaza el archivo `src/app/favicon.ico` con tu propio favicon.
+
+### Contenido
+
+Reemplaza el contenido en el archivo `resources/content.js` con tu propio contenido. Puedes usar componentes personalizados en la mayoría de los casos, ya que las props suelen estar declaradas como `ReactNode` en lugar de `string`, pero es importante que los importes en el archivo.
+
+```jsx
+// src/app/resources/content.js
+import { InlineCode } from "@/once-ui/components";
+import Link from "next/link";
+
+const person = {
+  // ...
+};
+```
+
+Los imports anteriores nos permitirían usar componentes `InlineCode` y `Link` en el archivo de contenido.
+
+### Detalles personales
+
+Tus detalles personales se utilizan en toda la aplicación para renderizar encabezados, etiquetas e imágenes personalizadas. Los idiomas se muestran en la página `/about`, y la ubicación y la hora en el encabezado.
+
+```jsx
+// src/app/resources/content.js
+const person = {
+    firstName: "Nombre",
+    lastName: "Apellido",
+    get name() {
+      return "...";
+    },
+    role: "Profesión",
+    avatar: "/images/avatar.jpg",
+    location: "America/Mexico_City", // Identificador de zona horaria IANA
+    languages: ["Español", "Inglés"], // opcional: Deja el array vacío si no quieres mostrar idiomas
+};
+```
+
+### Enlaces sociales
+
+Los enlaces sociales se muestran en la página `/about` y en el pie de página según el array configurado en el objeto `social`. Puedes establecer iconos personalizados para cada uno, pero no olvides importarlos en `src/once-ui/icons.ts`.
+
+```jsx
+// src/app/resources/content.js
+const social = [
+    {
+      name: "GitHub",
+      icon: "github",
+      link: "https://github.com/usuario",
+    },
+    {
+      name: "Email",
+      icon: "email",
+      link: "mailto:tu@email.com",
+    },
+];
+```
+
+### Páginas
+
+Cada página tiene su propio objeto que gestiona el contenido personalizado, como encabezados, subtítulos, imágenes y datos dinámicos.
+
+```jsx
+// src/app/resources/content.js
+const home = {
+    label: "Inicio",
+    title: "Mi Portafolio",
+    description: "Sitio web de portafolio que muestra mi trabajo",
+    headline: <>Diseñador y constructor</>,
+    subline: (
+      <>
+        Soy Nombre, un profesional en <InlineCode>Empresa</InlineCode>, donde creo
+        <br /> experiencias intuitivas. En mi tiempo libre, desarrollo mis propios proyectos.
+      </>
+    ),
+};
+```
+
+La propiedad `label` se utiliza en la navegación del encabezado. La propiedad `title` se utiliza para el título de la página y la propiedad `description` se utiliza para la descripción de la página. También se utilizan en etiquetas meta y open graph. 

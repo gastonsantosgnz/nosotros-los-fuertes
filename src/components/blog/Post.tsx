@@ -21,27 +21,31 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             <Flex
                 position="relative"
                 transition="micro-medium"
-                direction={direction}
+                direction="row"
                 radius="l"
                 className={styles.hover}
                 mobileDirection="column"
                 fillWidth>
                 {post.metadata.image && thumbnail && (
-                    <SmartImage
-                        priority
-                        className={styles.image}
-                        sizes="(max-width: 768px) 100vw, 640px"
-                        border="neutral-alpha-weak"
-                        cursor="interactive"
-                        radius="l"
-                        src={post.metadata.image}
-                        alt={'Thumbnail of ' + post.metadata.title}
-                        aspectRatio="16 / 9"
-                    />
+                    <Flex className={styles.imageContainer} flex={1}>
+                        <SmartImage
+                            priority
+                            className={styles.image}
+                            sizes="(max-width: 768px) 100vw, 300px"
+                            border="neutral-alpha-weak"
+                            cursor="interactive"
+                            radius="l"
+                            src={post.metadata.image}
+                            alt={'Thumbnail of ' + post.metadata.title}
+                            aspectRatio="16 / 9"
+                        />
+                    </Flex>
                 )}
                 <Column
                     position="relative"
-                    fillWidth gap="4"
+                    fillWidth 
+                    flex={1}
+                    gap="4"
                     padding="24"
                     vertical="center">
                     <Heading

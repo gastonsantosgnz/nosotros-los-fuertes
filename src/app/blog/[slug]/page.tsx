@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
-import { AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@/once-ui/components";
+import { AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text, SmartImage } from "@/once-ui/components";
 import { about, blog, person, baseURL } from "@/app/resources";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
@@ -84,6 +84,17 @@ export default async function Blog({
               {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
             </Text>
           </Row>
+          {post.metadata.image && (
+            <SmartImage
+              priority
+              sizes="(max-width: 768px) 100vw, 800px"
+              border="neutral-alpha-weak"
+              radius="l"
+              src={post.metadata.image}
+              alt={post.metadata.title}
+              aspectRatio="16 / 9"
+            />
+          )}
           <Column as="article" fillWidth>
             <CustomMDX source={post.content} />
           </Column>
@@ -99,7 +110,7 @@ export default async function Blog({
         textVariant="label-default-s"
       >
         <Icon name="document" size="xs" />
-        On this page
+        En esta página
       </Row>
       <HeadingNav fitHeight/>
     </Column>

@@ -12,7 +12,7 @@ export const ThemeToggle: React.FC = () => {
         prefixIcon={theme === 'dark' ? 'sun' : 'moon'}
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         selected={false}
-        aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        aria-label={`Cambiar al modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
       />
     </>
   );

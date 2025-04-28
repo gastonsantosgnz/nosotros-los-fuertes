@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <Flex
       suppressHydrationWarning
       as="html"
-      lang="en"
+      lang="es"
       background="page"
       data-neutral={style.neutral}
       data-brand={style.brand}
@@ -47,6 +47,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       )}
     >
       <head>
+        <link rel="icon" href="/images/nlflogo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/nlflogo.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
